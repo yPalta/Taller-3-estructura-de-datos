@@ -23,5 +23,6 @@ public:
     void registrarTransaccion(Transaccion* transaccion);
     Transaccion* buscarTransaccion(int id);
     void detectarTransaccionesSospechosasPorMonto(double montoLimite);
+    void buscarTransaccionesSospechosasPorUbicacion(std::string ubicacion);
     void generarReporte();
 };

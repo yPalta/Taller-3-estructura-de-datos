@@ -14,4 +14,5 @@ private:
 
 public:
     void iniciar();
+    void opcionBuscarTransaccionesSospechosasPorUbicacion();
 };

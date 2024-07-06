@@ -1,7 +1,7 @@
 #include "GestorTransacciones.h"
 #include <fstream>
 #include <sstream>
-#include <unordered_map>
+
 
 GestorTransacciones::GestorTransacciones() {
     cargarDesdeArchivo("transacciones.txt");
@@ -33,6 +33,19 @@ NodoAVL* GestorTransacciones::buscarNodoAVL(NodoAVL* nodo, int id) {
 
 void GestorTransacciones::detectarTransaccionesSospechosasPorMonto(double montoLimite) {
     detectarSospechosas(historialTransacciones.obtenerRaiz(), montoLimite);
+}
+
+void GestorTransacciones::buscarTransaccionesSospechosasPorUbicacion(std::string ubicacion) {
+    bool encontradas = false;
+    for (auto& transaccion : transaccionesReportadas) { 
+        if (transaccion->getUbicacion() == ubicacion) {
+            transaccion->mostrarTransaccion();
+            encontradas = true;
+        }
+    }
+    if (!encontradas) {
+        std::cout << "No se encontraron transacciones sospechosas en la ubicación especificada.\n";
+    }
 }
 
 void GestorTransacciones::detectarSospechosas(NodoAVL* nodo, double montoLimite) {

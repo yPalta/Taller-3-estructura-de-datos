@@ -54,10 +54,12 @@ void InterfazUsuario::opcionBuscarTransaccion() {
 }
 
 void InterfazUsuario::opcionDetectarTransaccionesSospechosas() {
-     std::cout << "Seleccione la forma de detectar transacciones sospechosas:" << std::endl;
+    std::string ubicacion;
+    std::cout << "Seleccione la forma de detectar transacciones sospechosas:" << std::endl;
     std::cout << "1. Transacciones que excedan un monto específico." << std::endl;
     std::cout << "2. Frecuencia inusualmente alta de transacciones en un corto periodo." << std::endl;
     std::cout << "3. Transacciones desde ubicaciones geográficas diferentes en un corto tiempo." << std::endl;
+
 
     int opcion;
     std::cin >> opcion;
@@ -74,7 +76,10 @@ void InterfazUsuario::opcionDetectarTransaccionesSospechosas() {
             //gestor.detectarTransaccionesFrecuentes();
             break;
         case 3:
-            //gestor.detectarTransaccionesDesdeUbicacionesDiferentes();
+            std::cout << "Ingrese la ubicación para buscar transacciones sospechosas: ";
+            std::getline(std::cin, ubicacion);
+            gestor.buscarTransaccionesSospechosasPorUbicacion(ubicacion);
+
             break;
         default:
             std::cout << "Opción no válida." << std::endl;
